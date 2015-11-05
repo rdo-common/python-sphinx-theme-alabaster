@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        0.7.6
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Configurable sidebar-enabled Sphinx theme
 
 License:        BSD
@@ -74,6 +74,9 @@ rm -rf %{pypi_name}.egg-info
 
 
 %changelog
+* Thu Nov 5 2015 Julien Enselme <jujens@jujens.eu> - 0.7.6-5
+- Rebuilt for python 3.5
+
 * Fri Jul 31 2015 Julien Enseme <jujens@jujens.eu> - 0.7.6-4
 - Use %%py2_build, %%py3build, %%py2_install and %%py2_install
 - Make a python2 subpackage
