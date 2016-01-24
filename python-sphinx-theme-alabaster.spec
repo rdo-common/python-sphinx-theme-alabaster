@@ -1,14 +1,18 @@
 %global pypi_name alabaster
 %global srcname sphinx-theme-%{pypi_name}
 
+%if 0%{?fedora} || 0%{?epel}
+%global with_python3 1
+%endif
+
 Name:           python-%{srcname}
 Version:        0.7.9
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Configurable sidebar-enabled Sphinx theme
 
 License:        BSD
 URL:            https://pypi.python.org/pypi/%{pypi_name}
-Source0:        https://pypi.python.org/packages/71/c3/70da7d8ac18a4f4c502887bd2549e05745fa403e2cd9d06a8a9910a762bc/%{pypi_name}-%{version}.tar.gz
+Source0:        https://pypi.io/packages/source/a/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
 BuildArch:      noarch
 BuildRequires:  python2-devel
@@ -30,6 +34,7 @@ used in his Requests project), which was itself originally based on @mitsuhiko's
 theme used for Flask & related projects.
 
 
+%if 0%{?with_python3}
 %package -n     python%{python3_pkgversion}-%{srcname}
 Summary:        Configurable sidebar-enabled Sphinx theme
 BuildArch:      noarch
@@ -41,6 +46,7 @@ BuildRequires:  python%{python3_pkgversion}-setuptools
 This theme is a modified "Kr" Sphinx theme from @kennethreitz (especially as
 used in his Requests project), which was itself originally based on @mitsuhiko's
 theme used for Flask & related projects.
+%endif
 
 
 %prep
@@ -52,12 +58,16 @@ rm -rf %{pypi_name}.egg-info
 
 %build
 %py2_build
+%if 0%{?with_python3}
 %py3_build
+%endif
 
 
 %install
 %py2_install
+%if 0%{?with_python3}
 %py3_install
+%endif
 
 
 %files -n python2-%{srcname}
@@ -66,14 +76,20 @@ rm -rf %{pypi_name}.egg-info
 %{python2_sitelib}/%{pypi_name}-%{version}-py%{python2_version}.egg-info/
 %{python2_sitelib}/%{pypi_name}/
 
+%if 0%{?with_python3}
 %files -n python%{python3_pkgversion}-%{srcname}
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info/
 %{python3_sitelib}/%{pypi_name}/
+%endif
 
 
 %changelog
+* Mon Mar  6 2017 Haïkel Guémar <hguemar@fedoraproject.org> - 0.7.9-4
+- Fix Source0 URL
+- Adapt spec file to EL7
+
 * Sat Feb 11 2017 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.9-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
