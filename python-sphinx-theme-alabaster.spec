@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        0.7.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Configurable sidebar-enabled Sphinx theme
 
 License:        BSD
@@ -30,14 +30,14 @@ used in his Requests project), which was itself originally based on @mitsuhiko's
 theme used for Flask & related projects.
 
 
-%package -n     python3-%{srcname}
+%package -n     python%{python3_pkgversion}-%{srcname}
 Summary:        Configurable sidebar-enabled Sphinx theme
 BuildArch:      noarch
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-%{?python_provide:%python_provide python3-%{srcname}}
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
-%description -n python3-%{srcname}
+%description -n python%{python3_pkgversion}-%{srcname}
 This theme is a modified "Kr" Sphinx theme from @kennethreitz (especially as
 used in his Requests project), which was itself originally based on @mitsuhiko's
 theme used for Flask & related projects.
@@ -66,7 +66,7 @@ rm -rf %{pypi_name}.egg-info
 %{python2_sitelib}/%{pypi_name}-%{version}-py%{python2_version}.egg-info/
 %{python2_sitelib}/%{pypi_name}/
 
-%files -n python3-%{srcname}
+%files -n python%{python3_pkgversion}-%{srcname}
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info/
@@ -74,6 +74,9 @@ rm -rf %{pypi_name}.egg-info
 
 
 %changelog
+* Fri May 13 2016 Julien Enselme <jujens@jujens.eu> - 0.7.8-1
+- Use %%python3_pkgversion macro for EPEL7 release
+
 * Fri May 13 2016 Julien Enselme <jujens@jujens.eu> - 0.7.8-1
 - Update to 0.7.8 (#1334952)
 
