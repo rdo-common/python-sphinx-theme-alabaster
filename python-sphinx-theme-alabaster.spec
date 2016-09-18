@@ -2,13 +2,13 @@
 %global srcname sphinx-theme-%{pypi_name}
 
 Name:           python-%{srcname}
-Version:        0.7.8
-Release:        2%{?dist}
+Version:        0.7.9
+Release:        1%{?dist}
 Summary:        Configurable sidebar-enabled Sphinx theme
 
 License:        BSD
 URL:            https://pypi.python.org/pypi/%{pypi_name}
-Source0:        https://pypi.python.org/packages/source/a/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://pypi.python.org/packages/71/c3/70da7d8ac18a4f4c502887bd2549e05745fa403e2cd9d06a8a9910a762bc/%{pypi_name}-%{version}.tar.gz
 
 BuildArch:      noarch
 BuildRequires:  python2-devel
@@ -74,6 +74,9 @@ rm -rf %{pypi_name}.egg-info
 
 
 %changelog
+* Sun Sep 18 2016 Julien Enselme <jujens@jujens.eu> - 0.7.9-1
+- Update to 0.7.9
+
 * Fri May 13 2016 Julien Enselme <jujens@jujens.eu> - 0.7.8-1
 - Use %%python3_pkgversion macro for EPEL7 release
 
