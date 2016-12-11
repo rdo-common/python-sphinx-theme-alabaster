@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        0.7.9
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Configurable sidebar-enabled Sphinx theme
 
 License:        BSD
@@ -74,6 +74,9 @@ rm -rf %{pypi_name}.egg-info
 
 
 %changelog
+* Fri Dec 09 2016 Charalampos Stratakis <cstratak@redhat.com> - 0.7.9-2
+- Rebuild for Python 3.6
+
 * Sun Sep 18 2016 Julien Enselme <jujens@jujens.eu> - 0.7.9-1
 - Update to 0.7.9
 
